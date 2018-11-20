@@ -110,3 +110,4 @@ ls -l /dev/disk/by-uuid
 
 ## Abilitare certificati di sicurezza SSL
 ## Configurazione Owncloud 
+![image](https://user-images.githubusercontent.com/9042964/48806214-ec58ad80-ed19-11e8-9ffa-f8d688c346ab.png)
