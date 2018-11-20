@@ -118,7 +118,8 @@ che andremo ad aggiungere al file fstab
 ```
 sudo joe /etc/fstab
 ```
-
+![image](https://user-images.githubusercontent.com/9042964/48806979-6427d780-ed1c-11e8-8269-7166835fe92b.png)
+Dopo aver copiato andare a capo e salcare il file.
 ## Abilitare certificati di sicurezza SSL
 ## Configurazione Owncloud 
 
