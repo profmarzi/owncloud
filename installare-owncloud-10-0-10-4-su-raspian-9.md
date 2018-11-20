@@ -1,4 +1,5 @@
-# Istruzioni in italiano ricavate da un post di https://www.avoiderrors.com/owncloud-10-raspberry-pi-3-raspbian-stretch/
+# Istruzioni in italiano ricavate da un post di:
+https://www.avoiderrors.com/owncloud-10-raspberry-pi-3-raspbian-stretch/
 ## Aggiornamento Raspberry
 ```
 sudo su
@@ -59,19 +60,52 @@ a2enmod dir
 a2enmod mime
 ```
 ## Crare database MySQL
-Prima di creare un database è necessario assegnare un utente con password
+Prima di creare un database è necessario assegnare un utente con password. Ho scelto raspberry
 ```
 mysql -u root -p
 ```
-Dopo aver inserito una password di propria scelta (non necessariamente la password del root di sistema) al prompt si scriveranno le seguenti righe, una alla volta, seguite da invio.
+Dopo aver inserito una password di propria scelta (non necessariamente la password del root di sistema) al prompt si scriveranno le seguenti righe, una alla volta, ognuna seguita da invio.
 ```
 MariaDB [(none)]> create database owncloud;
-MariaDB [(none)]> create user owncloud@localhost identified by '12345';
-MariaDB [(none)]> grant all privileges on owncloud.* to owncloud@localhost identified by '12345';
+MariaDB [(none)]> create user owncloud@localhost identified by 'raspberry';
+MariaDB [(none)]> grant all privileges on owncloud.* to owncloud@localhost identified by 'raspberry';
 MariaDB [(none)]> flush privileges;
 MariaDB [(none)]> exit;
   ```
- Dopo il comando exit si riceverà un Bye e si esce dal prompt.
-## Mountare HD esterno
+ Dopo il comando exit si riceverà un Bye in uscita dal prompt.
+ In pratica abbiamo impartito dei comandi che generano un nuovo database con le seguenti caratteristiche:
+ Username: owncloud
+ Password: raspberry
+ Database: owncloud
+ Server: localhost
+## Montare HD esterno
+Dovendo creare uno spazio per salvare i propri dati conviene collegare un HD al Raspberry. Questo serve a mettere a disposizione uno spazio maggiore ma soprattutto serve a non riempire e a logorare la memoria SD che contiene il sistema operativo. L'attuale versione 9 di Debian riconosce la presenza di un HD esterno e lo posiziona all'interno della cartella /media, tuttavia bisogna che ad ogni riavvio il sistema sappia che il nostro cloud si trova sull'HD e non altrove. Intanto l'HD deve essere formattato NTFS quindi colleghiamo l'HD ad una USB qualsiasi e lo formattiamo.
+```
+sudo apt-get install ntfs-3g -y
+```
+Successivamente creiamo una nuova cartella in /media. Diamo il nome ownclouddrive
+```
+sudo mkdir /media/ownclouddrive
+```
+Qusta cartella deve essere assegnata ad un proprietario che è il web server il cui nome, che abbiamo dià visto prima è www-data.Conviene creare un gruppo www-data in quanto ora sono diverse le risorse che gli appartengono: quella creata in /var/www/html/owncloud e ora /media/ownclouddrive.
+```
+sudo groupadd www-data
+sudo usermod -a -G www-data www-data
+```
+e vi aggiungiamo l'ultimo arrivato
+```
+sudo chown -R www-data:www-data /media/ownclouddrive
+sudo chmod -R 775 /media/ownclouddrive
+```
+La seconda riga di comando serve ad abilitare la scrittura nella cartella
+Siccome l'HD può essere inserito in uno degli ingressi USB che può essere diverso di volta in volta in caso si smontaggio del cloud,il sistema si serve di una tabella, fstab, dove individua le caratteristiche dei dispositivi collegati. Ad ogni dispositivo corrispondono dei connotati univoci.Le seguenti istruzioni servono a questo:
+```
+id -g www-data
+id -u www-data
+```
+Ora serve identificare il numero di serie dell'HD, l'UUID
+```
+ls -l /dev/disk/by-uuid
+```
 ## Abilitare certificati di sicurezza SSL
 ## Configurazione Owncloud 
