@@ -110,7 +110,7 @@ ls -l /dev/disk/by-uuid
 ![image](https://user-images.githubusercontent.com/9042964/48806214-ec58ad80-ed19-11e8-9ffa-f8d688c346ab.png)
 Per i primi due comandi il sistema risponde con il numero 33 mentre il terzo comando evidenzia l'assenza di un HD. Se lo inseriamo e ripetiamo il terzo comando otteniamo:
 ![image](https://user-images.githubusercontent.com/9042964/48806540-fcbd5800-ed1a-11e8-8493-63a36a89c1bf.png)
-Il comando restituisce i parametri dell'HD appena inserito, cioè 7673E63F78961150 -> ../../sda1 e con queste informazioni componiamo la riga di comando deguente:
+Il comando restituisce i parametri dell'HD appena inserito, cioè 7673E63F78961150 -> ../../sda1 e con queste informazioni componiamo la riga di comando seguente:
 ```
 UUID=7673E63F78961150 /media/ownclouddrive auto nofail,uid=33,gid=33,umask=0027,dmask=0027,noatime 0 0
 ```
@@ -119,7 +119,10 @@ che andremo ad aggiungere al file fstab
 sudo joe /etc/fstab
 ```
 ![image](https://user-images.githubusercontent.com/9042964/48806979-6427d780-ed1c-11e8-8269-7166835fe92b.png)
-Dopo aver copiato andare a capo e salcare il file.
+Dopo aver copiato andare a capo e salvare il file. Quindi riavviare
+```
+sudo reboot
+```
 ## Abilitare certificati di sicurezza SSL
 ## Configurazione Owncloud 
 
