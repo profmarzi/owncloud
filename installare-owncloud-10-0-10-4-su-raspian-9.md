@@ -59,7 +59,7 @@ a2enmod env
 a2enmod dir
 a2enmod mime
 ```
-## Crare database MySQL
+## Creare database MySQL
 Prima di creare un database è necessario assegnare un utente con password. Ho scelto raspberry
 ```
 mysql -u root -p
@@ -107,5 +107,6 @@ Ora serve identificare il numero di serie dell'HD, l'UUID
 ```
 ls -l /dev/disk/by-uuid
 ```
+
 ## Abilitare certificati di sicurezza SSL
 ## Configurazione Owncloud 
