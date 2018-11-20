@@ -109,7 +109,7 @@ ls -l /dev/disk/by-uuid
 ```
 ![image](https://user-images.githubusercontent.com/9042964/48806214-ec58ad80-ed19-11e8-9ffa-f8d688c346ab.png)
 Per i primi due comandi il sistema risponde con il numero 33 mentre il terzo comando evidenzia l'assenza di un HD. Se lo inseriamo e ripetiamo il terzo comando otteniamo:
-
+![image](https://user-images.githubusercontent.com/9042964/48806540-fcbd5800-ed1a-11e8-8493-63a36a89c1bf.png)
 ## Abilitare certificati di sicurezza SSL
 ## Configurazione Owncloud 
 
