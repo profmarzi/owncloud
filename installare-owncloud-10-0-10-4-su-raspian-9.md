@@ -60,11 +60,11 @@ a2enmod dir
 a2enmod mime
 ```
 ## Creare database MySQL
-Prima di creare un database è necessario assegnare un utente con password. Ho scelto raspberry
+Prima di creare un database è necessario assegnare un utente con password. Ho scelto raspberry come password e root come user
 ```
 mysql -u root -p
 ```
-Dopo aver inserito una password di propria scelta (non necessariamente la password del root di sistema) al prompt si scriveranno le seguenti righe, una alla volta, ognuna seguita da invio.
+Dopo aver inserito la password  (non necessariamente la password del root di sistema) al prompt si scriveranno le seguenti righe, una alla volta, ognuna seguita da invio.
 ```
 MariaDB [(none)]> create database owncloud;
 MariaDB [(none)]> create user owncloud@localhost identified by 'raspberry';
